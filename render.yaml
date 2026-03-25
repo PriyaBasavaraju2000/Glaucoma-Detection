@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: glaucoma-detection
+    env: docker
+    plan: free
+    envVars:
+      - fromGroup: default
