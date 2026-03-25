@@ -1,12 +1,9 @@
 services:
   - type: web
     name: Glaucoma-Detection-WebApp
-    env: python
-    pythonVersion: "3.8"
+    runtime: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
-```
-
-Or add a `.python-version` file to your repo root:
-```
-3.8.18
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
