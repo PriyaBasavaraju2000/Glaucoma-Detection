@@ -4,20 +4,18 @@ from mysql.connector import Error
 from markupsafe import Markup
 import os
 from werkzeug.utils import secure_filename
-import tensorflow as tf
 import tf_keras
-model = tf_keras.models.load_model(MODEL_PATH, compile=False)
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 
-MODEL_PATH = 'glucomamodel.h5'
-if not os.path.isfile(MODEL_PATH):
-    raise FileNotFoundError(f"Model file not found: {MODEL_PATH}. Train the model first by running transfer_learning_vgg_16.py")
-
-model = load_model(MODEL_PATH)
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'glucomamodel.h5')
+if not os.path.isfile(MODEL_PATH):
+    raise FileNotFoundError(f"Model file not found: {MODEL_PATH}")
+
+model = tf_keras.models.load_model(MODEL_PATH, compile=False)
 
 def dbconnection():
     db_config = {
