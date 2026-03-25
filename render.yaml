@@ -1,7 +1,12 @@
 services:
   - type: web
-    name: glaucoma-detection
-    env: docker
-    plan: free
-    envVars:
-      - fromGroup: default
+    name: Glaucoma-Detection-WebApp
+    env: python
+    pythonVersion: "3.8"
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+```
+
+Or add a `.python-version` file to your repo root:
+```
+3.8.18
