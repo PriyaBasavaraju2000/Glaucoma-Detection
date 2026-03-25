@@ -6,7 +6,7 @@ import os
 from werkzeug.utils import secure_filename
 import tensorflow as tf
 import tf_keras
-model = tf_keras.models.load_model(MODEL_PATH)
+model = tf_keras.models.load_model(MODEL_PATH, compile=False)
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 
