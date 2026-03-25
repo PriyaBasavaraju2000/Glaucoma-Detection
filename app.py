@@ -5,7 +5,8 @@ from markupsafe import Markup
 import os
 from werkzeug.utils import secure_filename
 import tensorflow as tf
-from tensorflow.keras.models import load_model
+import tf_keras
+model = tf_keras.models.load_model(MODEL_PATH)
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 
